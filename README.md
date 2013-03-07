@@ -1,27 +1,32 @@
-# Sinatra::Websocketio
+sinatra-websocketio
+===================
 
-TODO: Write a gem description
+* Node.js like WebSocket I/O plugin for Sinatra.
+* http://github.com/shokai/sinatra-websocketio
 
-## Installation
 
-Add this line to your application's Gemfile:
+Installation
+------------
 
-    gem 'sinatra-websocketio'
+    % gem install sinatra-websocketio
 
-And then execute:
 
-    $ bundle
+Requirements
+------------
+* Ruby 1.8.7+ or 1.9.2+
+* Sinatra 1.3.0+
+* EventMachine
+* jQuery
 
-Or install it yourself as:
 
-    $ gem install sinatra-websocketio
-
-## Usage
+Usage
+-----
 
 TODO: Write usage instructions here
 
-## Contributing
 
+Contributing
+------------
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
