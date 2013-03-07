@@ -36,9 +36,15 @@ class WebSocketIO
     end
   end
 
-  def self.push(type, data)
-    sessions.each do |session_id, h|
-      h[:websocket].send({:type => type, :data => data}.to_json)
+  def self.push(type, data, opt={})
+    session_ids = opt[:to].to_s.empty? ? self.sessions.keys : [opt[:to]]
+    session_ids.each do |id|
+      s = sessions[id]
+      begin
+        s[:websocket].send({:type => type, :data => data}.to_json)
+      rescue
+        next
+      end
     end
   end
 
