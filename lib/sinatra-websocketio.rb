@@ -1,0 +1,1 @@
+require "sinatra-websocketio/version"

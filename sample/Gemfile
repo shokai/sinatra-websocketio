@@ -1,0 +1,13 @@
+source :rubygems
+
+gem 'foreman'
+gem 'rack'
+gem 'sinatra'
+gem 'backports', '< 3.1.0'
+gem 'thin'
+gem 'sinatra-contrib'
+gem 'event_emitter'
+gem 'json'
+gem 'haml'
+gem 'sass'
+gem 'em-websocket'

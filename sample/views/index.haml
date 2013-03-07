@@ -1,0 +1,26 @@
+!!! XHTML
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'UTF-8'}
+    %title websocket chat
+    %link{:rel => 'stylesheet', :href => "/main.css", :type => 'text/css'}
+    %script{:type => 'text/javascript', :src => "//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"}
+    %script{:type => 'text/javascript', :src => websocketio_js}
+    %script{:type => 'text/javascript', :src => "/js/index.js"}
+
+  %body
+    %div#content
+      %div#header
+        %h1 websocket chat
+      %div#main
+        %div#chat
+          %input{:id => 'name', :value => 'name', :size => 20}
+          %input{:id => 'message', :value => 'hello!!', :size => 80}
+          %input{:id => 'btn_send', :type => 'button', :value => 'post'}
+          %ul#timeline
+
+      %hr
+      %div#footer
+        sinatra-cometio v#{Sinatra::WebSocketIO::VERSION} -
+        - src_url = 'https://github.com/shokai/sinatra-cometio'
+        %a{:href => src_url} #{src_url}
