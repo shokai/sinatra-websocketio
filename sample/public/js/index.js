@@ -13,6 +13,14 @@ io.on("connect", function(session){
   });
 });
 
+io.on("disconnect", function(session){
+  console.log("disconnect!!");
+});
+
+io.on("*", function(event, data){ // catch all events
+  console.log(event + " - " + JSON.stringify(data));
+});
+
 io.on("error", function(err){
   console.error(err);
 });
