@@ -1,17 +1,12 @@
 class WebSocketIO
 
-  def self.port
-    @@port ||= 8080
-  end
-
-  def self.start(port=8080)
-    @@port = port
+  def self.start
     EM::defer do
       while !EM::reactor_running? do
         sleep 1
       end
-      puts "WebSocketIO.start port:#{port}"
-      EM::WebSocket.run :host => "0.0.0.0", :port => port do |ws|
+      puts "WebSocketIO.start port:#{options[:port]}"
+      EM::WebSocket.run :host => "0.0.0.0", :port => options[:port] do |ws|
         ws.onopen do |handshake|
           params = parse_handshake_params handshake.path
           session_id = params[:session] || (create_session Socket.unpack_sockaddr_in ws.get_peername)

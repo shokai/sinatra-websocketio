@@ -11,5 +11,6 @@ require 'sinatra/websocketio'
 require File.dirname(__FILE__)+'/main'
 
 set :haml, :escape_html => true
+set :websocketio, :port => 8080
 
 run Sinatra::Application
