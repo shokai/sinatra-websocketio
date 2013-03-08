@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra-websocketio (0.0.1)
+    sinatra-websocketio (0.0.2)
       em-websocket
       event_emitter (>= 0.2.0)
       eventmachine (>= 1.0.0)
@@ -13,7 +13,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    backports (3.0.3)
+    backports (3.1.0)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
