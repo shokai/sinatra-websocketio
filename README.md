@@ -30,6 +30,7 @@ Server Side
 ```ruby
 require 'sinatra'
 require 'sinatra/websocketio'
+set :websocketio, :port => 8080
 
 run Sinatra::Application
 ```
