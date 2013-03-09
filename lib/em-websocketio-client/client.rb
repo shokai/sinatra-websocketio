@@ -42,7 +42,7 @@ module EventMachine
       end
 
       def push(type, data={})
-        @ws.send_msg({:type => type, :data => data}.to_json)
+        @ws.send_msg({:type => type, :data => data, :session => self.session}.to_json)
       end
 
     end
