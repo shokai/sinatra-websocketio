@@ -4,7 +4,7 @@ sinatra-websocketio
 * Node.js like WebSocket I/O plugin for Sinatra.
 * https://github.com/shokai/sinatra-websocketio
 * https://github.com/shokai/sinatra-websocketio/wiki
-* [Handle 10K+ clients](https://github.com/shokai/sinatra-websocketio/wiki/C10K)
+* [Handle 10K+ clients on 1 process](https://github.com/shokai/sinatra-websocketio/wiki/C10K)
 
 
 Installation
