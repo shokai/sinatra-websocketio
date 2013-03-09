@@ -1,3 +1,7 @@
+=== 0.0.5 2013-03-10
+
+* handle 10K clients
+
 === 0.0.4 2013-03-10
 
 * close websocket if session_id duplicate
