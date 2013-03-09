@@ -3,6 +3,7 @@ PATH
   specs:
     sinatra-websocketio (0.0.2)
       em-websocket
+      em-websocket-client
       event_emitter (>= 0.2.0)
       eventmachine (>= 1.0.0)
       json (>= 1.7.0)
@@ -13,14 +14,21 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    backports (3.1.0)
+    addressable (2.3.3)
+    backports (3.1.1)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
+    em-websocket-client (0.1.1)
+      eventmachine
+      libwebsocket
     event_emitter (0.2.3)
-    eventmachine (1.0.1)
+    eventmachine (1.0.3)
     http_parser.rb (0.5.3)
     json (1.7.7)
+    libwebsocket (0.1.7.1)
+      addressable
+      websocket
     rack (1.5.2)
     rack-protection (1.4.0)
       rack
@@ -38,6 +46,7 @@ GEM
       sinatra (~> 1.3.0)
       tilt (~> 1.3)
     tilt (1.3.4)
+    websocket (1.0.7)
 
 PLATFORMS
   ruby

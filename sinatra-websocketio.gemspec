@@ -22,4 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'json', '>= 1.7.0'
   gem.add_dependency 'event_emitter', '>= 0.2.0'
   gem.add_dependency 'em-websocket'
+  gem.add_dependency 'em-websocket-client'
 end
