@@ -66,5 +66,7 @@ class WebSocketIO
 
 end
 EventEmitter.apply WebSocketIO
-
+WebSocketIO.on :__session_id do |data, from|
+  WebSocketIO.push :__session_id, from, :to => from
+end
 
