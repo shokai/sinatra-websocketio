@@ -10,23 +10,30 @@ class WebSocketIO
         ws.onopen do |handshake|
           params = parse_handshake_params handshake.path
           session_id = params[:session] || (create_session Socket.unpack_sockaddr_in ws.get_peername)
-          self.sessions[session_id] = {
-            :websocket => ws
-          }
-          ws.onclose do
-            self.sessions.delete session_id
-            self.emit :disconnect, session_id
-          end
-          ws.onmessage do |msg|
-            begin
-              data = JSON.parse msg
-            rescue => e
-              self.emit :error, e
+
+          if self.sessions.include? session_id
+            ws.send({:type => :error, :data => "invalid session_id (#{session_id})"}.to_json)
+            ws.close
+          else
+            self.sessions[session_id] = {
+              :websocket => ws
+            }
+            ws.onclose do
+              self.sessions.delete session_id
+              self.emit :disconnect, session_id
             end
-            self.emit data['type'], data['data'], session_id if data
+            ws.onmessage do |msg|
+              begin
+                data = JSON.parse msg
+              rescue => e
+                self.emit :error, e
+              end
+              self.emit data['type'], data['data'], session_id if data
+            end
+            ws.send({:type => :__session_id, :data => session_id}.to_json)
+            self.emit :connect, session_id
           end
-          ws.send({:type => :__session_id, :data => session_id}.to_json)
-          self.emit :connect, session_id
+
         end
       end
     end
