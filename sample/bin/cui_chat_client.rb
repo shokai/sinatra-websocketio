@@ -24,7 +24,6 @@ EM::run do
 
   client.on :disconnect do
     puts "disconnected!!"
-    EM::stop_event_loop
   end
 
   EM::defer do

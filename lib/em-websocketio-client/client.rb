@@ -15,7 +15,8 @@ module EventMachine
       end
 
       def connect
-        @ws = EventMachine::WebSocketClient.connect @url
+        url = @session ? "#{@url}/session=#{@session}" : @url
+        @ws = EventMachine::WebSocketClient.connect url
 
         @ws.stream do |msg|
           data = JSON.parse msg
@@ -32,6 +33,9 @@ module EventMachine
 
         @ws.disconnect do
           self.emit :disconnect
+          EM::add_timer 10 do
+            connect
+          end
         end
 
         return self
