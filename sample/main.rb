@@ -1,6 +1,6 @@
 WebSocketIO.on :connect do |session|
   puts "new client <#{session}>"
-  WebSocketIO.push :chat, {:name => "system", :message => "new client <#{session}>"}
+  WebSocketIO.push :chat, {:name => "system", :message => "new client <#{session}> / #{WebSocketIO.sessions.size} clients connecting"}
   WebSocketIO.push :chat, {:name => "system", :message => "welcome <#{session}>"}, {:to => session}
 end
 

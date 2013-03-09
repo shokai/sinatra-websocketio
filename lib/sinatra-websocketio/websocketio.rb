@@ -14,6 +14,7 @@ class WebSocketIO
             :websocket => ws
           }
           ws.onclose do
+            self.sessions.delete session_id
             self.emit :disconnect, session_id
           end
           ws.onmessage do |msg|
