@@ -159,6 +159,17 @@ chat app
 - https://github.com/shokai/sinatra-websocketio/tree/master/sample
 
 
+Test
+----
+
+    % gem install bundler
+    % bundle install
+    % export PORT=5000
+    % export WS_PORT=8080
+    % export PID_FILE=/tmp/sinatra-websocketio-test.pid
+    % rake test
+
+
 Contributing
 ------------
 1. Fork it
