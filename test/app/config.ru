@@ -7,4 +7,6 @@ require 'sinatra'
 require 'sinatra/websocketio'
 require File.dirname(__FILE__)+'/main'
 
+set :websocketio, :port => ENV['WS_PORT'].to_i
+
 run TestApp

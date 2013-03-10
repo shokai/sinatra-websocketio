@@ -37,7 +37,7 @@ class App
     return if @running
     File.delete pid_file if File.exists? pid_file
     Thread.new do
-      IO::popen "cd #{app_dir} && PID_FILE=#{pid_file} rackup config.ru -p #{port} > /dev/null 2>&1"
+      IO::popen "cd #{app_dir} && PID_FILE=#{pid_file} WS_PORT=#{ws_port} rackup config.ru -p #{port} > /dev/null 2>&1"
     end
     @running = true
     100.times do
