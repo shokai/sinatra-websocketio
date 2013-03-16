@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["hashimoto@shokai.org"]
   gem.description   = %q{Node.js like WebSocket I/O plugin for Sinatra.}
   gem.summary       = gem.description
-  gem.homepage      = "https://github.com/shokai/sinatra-websocketio"
+  gem.homepage      = "http://shokai.github.com/sinatra-websocketio"
 
   gem.files         = `git ls-files`.split($/).reject{|i| i=="Gemfile.lock" }
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
