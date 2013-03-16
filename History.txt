@@ -1,3 +1,7 @@
+=== 0.1.1 2013-03-17
+
+* read javascript file - Sinatra::WebSocketIO.javascript
+
 === 0.1.0 2013-03-16
 
 * support modular style application
