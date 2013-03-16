@@ -37,8 +37,10 @@ set :websocketio, :port => 8080
 run Sinatra::Application
 ```
 ```ruby
-WebSocketIO.push :temperature, 35  # to all clients
-WebSocketIO.push :light, {:value => 150}, {:to => session_id} # to specific client
+io = Sinatra::WebSocketIO
+
+io.push :temperature, 35  # to all clients
+io.push :light, {:value => 150}, {:to => session_id} # to specific client
 ```
 
 Client Side
@@ -69,7 +71,7 @@ io.push("chat", {name: "shokai", message: "hello"}); // client -> server
 Server Side
 
 ```ruby
-WebSocketIO.on :chat do |data, session|
+io.on :chat do |data, session|
   puts "#{data['name']} : #{data['message']}  <#{session}>"
 end
 ## => "shokai : hello  <12abcde345f6g7h8ijk>"
@@ -92,11 +94,11 @@ io.on("disconnect", function(){
 Server Side
 
 ```ruby
-WebSocketIO.on :connect do |session|
+io.on :connect do |session|
   puts "new client <#{session}>"
 end
 
-WebSocketIO.on :disconnect do |session|
+io.on :disconnect do |session|
   puts "client disconnected <#{session}>"
 end
 ```
@@ -113,7 +115,7 @@ io.on("error", function(err){
 
 Server Side
 ```ruby
-WebSocketIO.on :error do |e|
+io.on :error do |e|
   STDERR.puts e
 end
 ```
@@ -123,16 +125,16 @@ end
 Server Side
 
 ```ruby
-event_id = WebSocketIO.on :chat do |data, from|
+event_id = io.on :chat do |data, from|
   puts "#{data} - from#{from}"
 end
-WebSocketIO.removeListener event_id
+io.removeListener event_id
 ```
 
 or
 
 ```ruby
-WebSocketIO.removeListener :chat  # remove all "chat" listener
+io.removeListener :chat  # remove all "chat" listener
 ```
 
 
