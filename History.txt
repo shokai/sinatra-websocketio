@@ -1,3 +1,7 @@
+=== 0.1.2 2013-03-18
+
+* fix gem dependencies
+
 === 0.1.1 2013-03-17
 
 * read javascript file - Sinatra::WebSocketIO.javascript
