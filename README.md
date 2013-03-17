@@ -15,7 +15,7 @@ Installation
 
 Requirements
 ------------
-* Ruby 1.8.7+ or 1.9.2+
+* Ruby 1.8.7 or 1.9.2 or 1.9.3 or 2.0.0
 * Sinatra 1.3.0+
 * EventMachine
 * jQuery
