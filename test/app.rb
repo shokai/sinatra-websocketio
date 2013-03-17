@@ -17,7 +17,7 @@ class App
   end
 
   def self.pid_file
-    ENV['PID_FILE'] || "/tmp/sinatra-cometio-testapp.pid"
+    ENV['PID_FILE'] || "/tmp/sinatra-websocketio-testapp.pid"
   end
 
   def self.app_dir
