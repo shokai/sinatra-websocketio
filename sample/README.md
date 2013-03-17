@@ -18,17 +18,3 @@ Run
     % foreman start
 
 => http://localhost:5000
-
-
-Deploy Heroku
--------------
-
-    % mkdir ~/websocketio-sample
-    % cp -R ./ ~/websocketio-sample/
-    % cd ~/websocketio-sample
-    % git init
-    % git add ./
-    % git commit -m "first sample chat"
-    % heroku create --stack cedar
-    % git push heroku master
-    % heroku open
