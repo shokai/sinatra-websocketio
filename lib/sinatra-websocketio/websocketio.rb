@@ -51,6 +51,7 @@ module Sinatra
     def self.push(type, data, opt={})
       session_ids = opt[:to].to_s.empty? ? self.sessions.keys : [opt[:to]]
       session_ids.each do |id|
+        next unless sessions.include? id
         s = sessions[id]
         begin
           s[:websocket].send({:type => type, :data => data}.to_json)
