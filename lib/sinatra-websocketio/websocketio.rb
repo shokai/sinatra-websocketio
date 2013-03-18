@@ -1,7 +1,15 @@
 module Sinatra
   module WebSocketIO
 
+    @@running = false
+    def self.running?
+      @@running
+    end
+
+
     def self.start
+      return if running?
+      @@running = true
       EM::defer do
         while !EM::reactor_running? do
           sleep 1
