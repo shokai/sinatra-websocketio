@@ -24,9 +24,7 @@ module Sinatra
               ws.send({:type => :error, :data => "invalid session_id (#{session_id})"}.to_json)
               ws.close
             else
-              self.sessions[session_id] = {
-                :websocket => ws
-              }
+              self.sessions[session_id] = ws
               ws.onclose do
                 self.sessions.delete session_id
                 self.emit :disconnect, session_id
@@ -54,7 +52,7 @@ module Sinatra
         next unless sessions.include? id
         s = sessions[id]
         begin
-          s[:websocket].send({:type => type, :data => data}.to_json)
+          s.send({:type => type, :data => data}.to_json)
         rescue
           next
         end
@@ -62,11 +60,7 @@ module Sinatra
     end
 
     def self.sessions
-      @@sessions ||= Hash.new{|h,session_id|
-        h[session_id] = {
-          :websocket => nil
-        }
-      }
+      @@sessions ||= Hash.new
     end
 
     def self.create_session(ip_addr)
