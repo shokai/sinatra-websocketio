@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.version       = Sinatra::WebSocketIO::VERSION
   gem.authors       = ["Sho Hashimoto"]
   gem.email         = ["hashimoto@shokai.org"]
-  gem.description   = %q{Node.js like WebSocket I/O plugin for Sinatra.}
+  gem.description   = %q{WebSocket component for Sinatra RocketIO}
   gem.summary       = gem.description
   gem.homepage      = "http://shokai.github.com/sinatra-websocketio"
 
