@@ -1,11 +1,11 @@
 sinatra-websocketio
 ===================
+WebSocket component for [Sinatra RocketIO](https://github.com/shokai/sinatra-rocketio)
 
-* Node.js like WebSocket I/O plugin for Sinatra.
+* Node.js like WebSocket I/O plugin for Sinatra
 * https://github.com/shokai/sinatra-websocketio
 * https://github.com/shokai/sinatra-websocketio/wiki
 * [Handle 10K+ clients on 1 process](https://github.com/shokai/sinatra-websocketio/wiki/C10K)
-* This is a component of the [RocketIO](https://github.com/shokai/sinatra-rocketio)
 
 
 Installation
