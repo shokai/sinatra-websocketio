@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'foreman'
-gem 'rack'
+gem 'sinatra-contrib'
 gem 'sinatra'
 gem 'thin'
-gem 'sinatra-contrib'
+gem 'rack'
 gem 'event_emitter'
 gem 'json'
 gem 'haml'
