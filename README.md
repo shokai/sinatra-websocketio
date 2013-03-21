@@ -66,7 +66,9 @@ io.on("light", function(data){
 Client Side
 
 ```javascript
-io.push("chat", {name: "shokai", message: "hello"}); // client -> server
+io.on("connect", function{
+  io.push("chat", {name: "shokai", message: "hello"}); // client -> server
+});
 ```
 
 Server Side
@@ -97,6 +99,7 @@ Server Side
 ```ruby
 io.on :connect do |session|
   puts "new client <#{session}>"
+  io.push :hello, "hello!!"
 end
 
 io.on :disconnect do |session|
