@@ -9,6 +9,7 @@ PATH
       json (>= 1.7.0)
       sinatra (>= 1.3.0)
       sinatra-contrib (>= 1.3.2)
+      websocket-client-simple
 
 GEM
   remote: https://rubygems.org/
@@ -52,6 +53,9 @@ GEM
       rack (>= 1.0.0)
     tilt (1.3.6)
     websocket (1.0.7)
+    websocket-client-simple (0.0.4)
+      event_emitter
+      websocket
 
 PLATFORMS
   ruby

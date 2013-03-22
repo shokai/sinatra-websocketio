@@ -6,7 +6,6 @@ module Sinatra
       @@running
     end
 
-
     def self.start
       return if running?
       @@running = true
