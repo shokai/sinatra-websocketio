@@ -11,6 +11,7 @@ module Sinatra
 
       include EventEmitter
       attr_reader :url, :session
+      attr_accessor :running, :connecting
 
       def initialize(url)
         @url = url
@@ -32,7 +33,10 @@ module Sinatra
         begin
           @websocket = WebSocket::Client::Simple::Client.new url
         rescue StandardError, Timeout::Error => e
-          connect
+          Thread.new do
+            sleep 10
+            connect
+          end
         end
 
         @websocket.on :message do |msg|
@@ -45,11 +49,11 @@ module Sinatra
         end
 
         @websocket.on :close do |e|
-          if @connecting
-            @connecting = false
+          if this.connecting
+            this.connecting = false
             this.emit :disconnect, e
           end
-          if @running
+          if this.running
             Thread.new do
               sleep 10
               this.connect
@@ -58,7 +62,7 @@ module Sinatra
         end
 
         @websocket.on :open do
-          @connecting = true
+          this.connecting = true
         end
 
         return self
@@ -70,7 +74,7 @@ module Sinatra
       end
 
       def push(type, data)
-        if @connecting
+        if !@connecting
           emit :error, 'websocket not connecting'
           return
         end
