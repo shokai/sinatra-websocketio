@@ -1,3 +1,9 @@
+=== 0.2.0 2013-03-23
+
+* add Sinatra::WebSocketIO::Client
+* use gem.add_development_dependency
+* delete sample/Gemfile
+
 === 0.1.7 2013-03-21
 
 * emit "error" on push before websocket connect
