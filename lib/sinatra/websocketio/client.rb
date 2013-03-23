@@ -2,6 +2,7 @@ require File.expand_path '../../sinatra-websocketio/version', File.dirname(__FIL
 require 'websocket-client-simple'
 require 'event_emitter'
 require 'json'
+require 'timeout'
 
 module Sinatra
   module WebSocketIO
@@ -11,7 +12,7 @@ module Sinatra
 
       include EventEmitter
       attr_reader :url, :session
-      attr_accessor :running, :connecting
+      attr_accessor :running, :connecting, :timeout
 
       def initialize(url)
         @url = url
@@ -19,6 +20,7 @@ module Sinatra
         @websocket = nil
         @connecting = false
         @running = false
+        @timeout = 5
 
         on :__session_id do |session_id|
           @session = session_id
@@ -36,7 +38,7 @@ module Sinatra
           @websocket = WebSocket::Client::Simple::Client.new url
         rescue StandardError, Timeout::Error => e
           Thread.new do
-            sleep 10
+            sleep 5
             connect
           end
         end
@@ -58,7 +60,7 @@ module Sinatra
           end
           if this.running
             Thread.new do
-              sleep 10
+              sleep 5
               this.connect
             end
           end
@@ -81,7 +83,13 @@ module Sinatra
           emit :error, 'websocket not connecting'
           return
         end
-        @websocket.send({:type => type, :data => data, :session => @session}.to_json)
+        begin
+          Timeout::timeout @timeout do
+            @websocket.send({:type => type, :data => data, :session => @session}.to_json)
+          end
+        rescue Timeout::Error, StandardError => e
+          emit :error, e
+        end
       end
 
     end
