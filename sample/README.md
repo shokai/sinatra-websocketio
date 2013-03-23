@@ -8,13 +8,13 @@ WebSocket Chat
 Install Dependencies
 --------------------
 
-    % gem install bundler foreman
+    % gem install bundler
     % bundle install
 
 
 Run
 ---
 
-    % foreman start
+    % rackup config.ru -p 5000
 
 => http://localhost:5000
