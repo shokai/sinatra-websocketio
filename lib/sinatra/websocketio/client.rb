@@ -27,9 +27,11 @@ module Sinatra
       end
 
       def connect
+        return self if connecting
         this = self
         @running = true
         url = @session ? "#{@url}/session=#{@session}" : @url
+        @websocket = nil
         begin
           @websocket = WebSocket::Client::Simple::Client.new url
         rescue StandardError, Timeout::Error => e
@@ -38,6 +40,7 @@ module Sinatra
             connect
           end
         end
+        return self unless @websocket
 
         @websocket.on :message do |msg|
           begin
