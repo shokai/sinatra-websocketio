@@ -17,10 +17,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.add_dependency 'sinatra-contrib', '>= 1.3.2'
   gem.add_dependency 'sinatra', '>= 1.3.0'
-  gem.add_dependency 'websocket-client-simple'
-  gem.add_dependency 'em-websocket-client', '>= 0.1.1'
   gem.add_dependency 'em-websocket', '>= 0.5.0'
   gem.add_dependency 'eventmachine', '>= 1.0.0'
   gem.add_dependency 'json', '>= 1.7.0'
   gem.add_dependency 'event_emitter', '>= 0.2.4'
+  gem.add_dependency 'websocket-client-simple'
 end
