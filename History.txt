@@ -1,3 +1,7 @@
+=== 0.2.1 2013-03-26
+
+* fix WebSocketIO::push
+
 === 0.2.0 2013-03-23
 
 * add Sinatra::WebSocketIO::Client
