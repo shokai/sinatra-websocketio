@@ -47,17 +47,18 @@ module Sinatra
 
     def self.push(type, data, opt={})
       session_ids = opt[:to].to_s.empty? ? self.sessions.keys : [opt[:to]]
-      if opt.include? :to and self.sessions.include? opt[:to]
+      if opt.include? :to
+        return unless self.sessions.include? opt[:to]
         s = self.sessions[opt[:to]]
         begin
           s.send({:type => type, :data => data}.to_json)
         rescue => e
           emit :error, "websocketio push error (session:#{opt[:to]})"
         end
-      else
-        self.sessions.keys.each do |id|
-          push type, data, :to => id
-        end
+        return
+      end
+      self.sessions.keys.each do |id|
+        push type, data, :to => id
       end
     end
 
