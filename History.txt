@@ -1,3 +1,7 @@
+=== 0.2.3 2013-04-01
+
+* bugfix js
+
 === 0.2.2 2013-03-26
 
 * bugfix WebSocketIO::push
