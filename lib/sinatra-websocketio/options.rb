@@ -30,11 +30,11 @@ module Sinatra
       opts.each do |k,v|
         k = k.to_sym
         unless default_options.include? k
-          STDERR.puts "!! #{self} setting - \"#{k}\" is not valid key"
+          STDERR.puts "!! Sinatra::WebSocketIO setting - \"#{k}\" is not valid key"
         else
           unless default_options[k][1].call(v)
             default = default_options[k][0]
-            STDERR.puts "!! #{self} setting - \"#{k} => #{v}\" is not valid. set default \"#{k} => #{default}\""
+            STDERR.puts "!! Sinatra::WebSocketIO setting - \"#{k} => #{v}\" is not valid. set default \"#{k} => #{default}\""
             @@options[k] = default
           else
             @@options[k] = v
@@ -42,7 +42,7 @@ module Sinatra
         end
       end
       default_options.each do |k, v|
-        @@options[k] = v unless @@options.include? k
+        @@options[k] = v[0] unless @@options.include? k
       end
       @@options
     end
