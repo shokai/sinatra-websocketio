@@ -1,3 +1,7 @@
+=== 0.2.8 2013-04-18
+
+* set default websocket port 9000
+
 === 0.2.7 2013-04-18
 
 * set wetsocket port ENV["WS_PORT"]
