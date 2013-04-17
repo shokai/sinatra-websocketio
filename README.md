@@ -158,6 +158,17 @@ io.removeListener("error");  // remove all "error" listener
 ```
 
 
+### Config
+
+```ruby
+set :websocketio, :port => 8080
+```
+or
+
+    % WS_PORT=8080 rackup config.ru
+
+
+
 Sample App
 ----------
 chat app
