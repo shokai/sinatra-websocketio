@@ -33,7 +33,7 @@ Server Side
 ```ruby
 require 'sinatra'
 require 'sinatra/websocketio'
-set :websocketio, :port => 8080
+set :websocketio, :port => 9000
 
 run Sinatra::Application
 ```
@@ -161,11 +161,11 @@ io.removeListener("error");  // remove all "error" listener
 ### Config
 
 ```ruby
-set :websocketio, :port => 8080
+set :websocketio, :port => 9000
 ```
 or
 
-    % WS_PORT=8080 rackup config.ru
+    % WS_PORT=9000 rackup config.ru
 
 
 
@@ -182,7 +182,7 @@ Test
     % gem install bundler
     % bundle install
     % export PORT=5000
-    % export WS_PORT=8080
+    % export WS_PORT=9000
     % export PID_FILE=/tmp/sinatra-websocketio-test.pid
     % rake test
 

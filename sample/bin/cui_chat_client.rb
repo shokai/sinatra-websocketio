@@ -7,7 +7,7 @@ require 'sinatra/websocketio/client'
 
 name = `whoami`.strip || 'shokai'
 
-client = Sinatra::WebSocketIO::Client.new('ws://localhost:8080').connect
+client = Sinatra::WebSocketIO::Client.new('ws://localhost:9000').connect
 
 client.on :connect do |session|
   puts "connect!! (session_id:#{session})"

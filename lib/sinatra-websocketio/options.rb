@@ -11,7 +11,7 @@ module Sinatra
 
     def self.default_options
       {
-        :port => [(ENV['WS_PORT']||8080).to_i, lambda{|v| v.kind_of? Fixnum and v > 0 }]
+        :port => [(ENV['WS_PORT']||9000).to_i, lambda{|v| v.kind_of? Fixnum and v > 0 }]
       }
     end
 
