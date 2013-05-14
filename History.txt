@@ -1,3 +1,7 @@
+=== 0.2.9 2013-05-15
+
+* push "__heartbeat" in Ruby Client for detecting disconnect event
+
 === 0.2.8 2013-04-18
 
 * set default websocket port 9000
