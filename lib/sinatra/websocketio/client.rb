@@ -26,6 +26,15 @@ module Sinatra
           @session = session_id
           emit :connect, @session
         end
+
+        on :connect do
+          @thread_heartbeat = Thread.new do
+            while @connecting
+              push :__heartbeat, {:time => Time.now.to_i}
+              sleep 10
+            end
+          end
+        end
       end
 
       def connect
