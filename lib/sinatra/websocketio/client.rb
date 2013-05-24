@@ -31,7 +31,7 @@ module Sinatra
           @thread_heartbeat = Thread.new do
             while @connecting
               push :__heartbeat, {:time => Time.now.to_i}
-              sleep 10
+              sleep 5
             end
           end
         end
@@ -44,10 +44,13 @@ module Sinatra
         url = @session ? "#{@url}/session=#{@session}" : @url
         @websocket = nil
         begin
-          @websocket = WebSocket::Client::Simple::Client.new url
+          Timeout::timeout @timeout do
+            @websocket = WebSocket::Client::Simple::Client.new url
+          end
         rescue StandardError, Timeout::Error => e
+          this.emit :error, e
           Thread.new do
-            sleep 5
+          sleep 5
             connect
           end
         end
@@ -68,10 +71,8 @@ module Sinatra
             this.emit :disconnect, e
           end
           if this.running
-            Thread.new do
-              sleep 5
-              this.connect
-            end
+            sleep 1
+            this.connect
           end
         end
 
