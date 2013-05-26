@@ -1,3 +1,7 @@
+=== 0.3.1 2013-05-27
+
+* add constructor args in JS lib
+
 === 0.3.0 2013-05-24
 
 * bugfix Ruby Client
