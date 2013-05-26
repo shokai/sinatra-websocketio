@@ -1,6 +1,6 @@
 require File.expand_path 'test_helper', File.dirname(__FILE__)
 
-class TestWebSocketIO < MiniTest::Unit::TestCase
+class TestWebSocketIO < MiniTest::Test
 
   def setup
     App.start
