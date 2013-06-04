@@ -1,3 +1,7 @@
+=== 0.3.2 2013-06-05
+
+* bugfix error catching in JS lib
+
 === 0.3.1 2013-05-27
 
 * add constructor args in JS lib
