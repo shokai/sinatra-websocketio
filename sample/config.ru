@@ -9,6 +9,8 @@ if development?
   $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 end
 require 'sinatra/websocketio'
+require 'sass'
+require 'haml'
 require File.dirname(__FILE__)+'/main'
 
 set :haml, :escape_html => true
