@@ -46,7 +46,6 @@ module Sinatra
     end
 
     def self.push(type, data, opt={})
-      session_ids = opt[:to].to_s.empty? ? self.sessions.keys : [opt[:to]]
       if opt.include? :to
         return unless self.sessions.include? opt[:to]
         s = self.sessions[opt[:to]]
