@@ -47,7 +47,7 @@ io.push :light, {:value => 150}, {:to => session_id} # to specific client
 Client Side
 
 ```html
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="<%= websocketio_js %>"></script>
 ```
 ```javascript
