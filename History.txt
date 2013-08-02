@@ -1,3 +1,8 @@
+=== 0.3.4 2013-08-02
+
+* delete unnecessary code
+* use jquery 1.10.2 in sample app
+
 === 0.3.3 2013-06-05
 
 * fix JS lib
