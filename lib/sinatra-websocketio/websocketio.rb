@@ -42,6 +42,10 @@ module Sinatra
 
           end
         end
+
+        EM::add_periodic_timer 300 do
+          push :__heartbeat, {:time => Time.now}
+        end
       end
     end
 
