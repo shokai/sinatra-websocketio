@@ -15,15 +15,19 @@ module Sinatra
         end
         puts "Sinatra::WebSocketIO.start port:#{options[:port]}"
         EM::WebSocket.run :host => "0.0.0.0", :port => options[:port] do |ws|
-          ws.onopen do |handshake|
+          ws.onopen do |handshake, connection|
             params = parse_handshake_params handshake.path
-            session_id = params[:session] || (create_session Socket.unpack_sockaddr_in ws.get_peername)
+            remote_addr = Socket.unpack_sockaddr_in(ws.get_peername)[1]
+            session_id = params[:session] || create_session(remote_addr)
 
             if self.sessions.include? session_id
               ws.send({:type => :error, :data => "invalid session_id (#{session_id})"}.to_json)
               ws.close
             else
-              self.sessions[session_id] = ws
+              self.sessions[session_id] = {
+                :websocket => ws,
+                :remote_addr => remote_addr
+              }
               ws.onclose do
                 self.sessions.delete session_id
                 self.emit :disconnect, session_id
@@ -52,7 +56,7 @@ module Sinatra
     def self.push(type, data, opt={})
       if opt.include? :to
         return unless self.sessions.include? opt[:to]
-        s = self.sessions[opt[:to]]
+        s = self.sessions[opt[:to]][:websocket]
         begin
           s.send({:type => type, :data => data}.to_json)
         rescue => e
@@ -66,7 +70,7 @@ module Sinatra
     end
 
     def self.sessions
-      @@sessions ||= Hash.new
+      @@sessions ||= Hash.new{|h,k| h[k] = {:websocket => nil, :remote_addr => nil} }
     end
 
     def self.create_session(ip_addr)
