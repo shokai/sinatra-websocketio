@@ -15,7 +15,7 @@ module Sinatra
         end
         puts "Sinatra::WebSocketIO.start port:#{options[:port]}"
         EM::WebSocket.run :host => "0.0.0.0", :port => options[:port] do |ws|
-          ws.onopen do |handshake, connection|
+          ws.onopen do |handshake|
             params = parse_handshake_params handshake.path
             remote_addr = Socket.unpack_sockaddr_in(ws.get_peername)[1]
             session_id = params[:session] || create_session(remote_addr)
