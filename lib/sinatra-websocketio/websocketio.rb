@@ -69,7 +69,7 @@ module Sinatra
     end
 
     def self.sessions
-      @@sessions = {}
+      @@sessions ||= Hash.new
     end
 
     def self.create_session(ip_addr)
