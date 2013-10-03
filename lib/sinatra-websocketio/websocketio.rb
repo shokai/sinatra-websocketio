@@ -54,23 +54,22 @@ module Sinatra
     end
 
     def self.push(type, data, opt={})
-      if opt.include? :to
-        return unless self.sessions.include? opt[:to]
+      if opt.include? :to and self.sessions.include? opt[:to]
         s = self.sessions[opt[:to]][:websocket]
         begin
           s.send({:type => type, :data => data}.to_json)
         rescue => e
           emit :error, "websocketio push error (session:#{opt[:to]})"
         end
-        return
-      end
-      self.sessions.keys.each do |id|
-        push type, data, :to => id
+      else
+        self.sessions.keys.each do |id|
+          push type, data, :to => id
+        end
       end
     end
 
     def self.sessions
-      @@sessions ||= Hash.new{|h,k| h[k] = {:websocket => nil, :remote_addr => nil} }
+      @@sessions = {}
     end
 
     def self.create_session(ip_addr)
