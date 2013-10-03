@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra-websocketio (0.3.8)
+    sinatra-websocketio (0.3.9)
       em-websocket (>= 0.5.0)
       event_emitter (>= 0.2.4)
       eventmachine (>= 1.0.0)
