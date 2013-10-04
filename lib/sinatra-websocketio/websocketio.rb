@@ -54,7 +54,8 @@ module Sinatra
     end
 
     def self.push(type, data, opt={})
-      if opt.include? :to and self.sessions.include? opt[:to]
+      if opt.include? :to
+        return unless self.sessions.include? opt[:to]
         s = self.sessions[opt[:to]][:websocket]
         begin
           s.send({:type => type, :data => data}.to_json)
