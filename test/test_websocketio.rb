@@ -2,14 +2,6 @@ require File.expand_path 'test_helper', File.dirname(__FILE__)
 
 class TestWebSocketIO < MiniTest::Test
 
-  def setup
-    App.start
-  end
-
-  def teardown
-    App.stop
-  end
-
   def test_simple
     res = nil
     post_data = {:time => Time.now.to_s, :msg => 'hello!!'}

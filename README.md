@@ -181,9 +181,13 @@ Test
 
     % gem install bundler
     % bundle install
-    % export PORT=5000
-    % export WS_PORT=9000
-    % export PID_FILE=/tmp/sinatra-websocketio-test.pid
+
+start server
+
+    % rake test_server
+
+run test
+
     % rake test
 
 

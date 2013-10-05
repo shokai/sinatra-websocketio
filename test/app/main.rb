@@ -1,8 +1,3 @@
-pid_file = ENV['PID_FILE'] || "/tmp/sinatra-websocketio-test-pid"
-File.open(pid_file, "w+") do |f|
-  f.write Process.pid.to_s
-end
-
 class TestApp < Sinatra::Base
   register Sinatra::WebSocketIO
   io = Sinatra::WebSocketIO
