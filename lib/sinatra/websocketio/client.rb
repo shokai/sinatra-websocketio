@@ -85,7 +85,7 @@ module Sinatra
 
       def close
         @running = false
-        @websocket.close
+        @websocket.close if @websocket
       end
 
       def push(type, data)
